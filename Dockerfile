@@ -31,6 +31,7 @@ COPY conf/nginx.conf /etc/nginx/nginx.conf
 # Configure MySQL
 COPY conf/my.cnf /etc/mysql/my.cnf
 COPY conf/mysql.sh /app/mysql.sh
+RUN chmod +x /app/mysql.sh
 
 # Configure PHP-FPM
 COPY conf/fpm-pool.conf /etc/php81/php-fpm.d/www.conf
