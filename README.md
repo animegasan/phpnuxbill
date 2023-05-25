@@ -6,7 +6,7 @@
 ---
 
 <p align="center">
-<img alt="Logo Banner" src=""/>
+<img alt="Logo Banner" src="https://github.com/hotspotbilling/phpnuxbill/blob/master/install/img/logo.png"/>
 </p>
 
 ---
