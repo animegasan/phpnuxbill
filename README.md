@@ -6,7 +6,7 @@
 ---
 
 <p align="center">
-<img alt="Logo Banner" src="https://github.com/hotspotbilling/phpnuxbill/blob/master/install/img/logo.png"/>
+<img alt="Logo Banner" src="https://raw.githubusercontent.com/animegasan/phpnuxbill/main/src/install/img/logo.png"/>
 </p>
 
 ---
@@ -57,9 +57,29 @@ docker run -d \
 
 ---
 
+### Install PHPNuxBill
+- Open your web browser and visit the url `http://<IP_ADDRESS>:8080/install` to access the PHPNuxBill installer.
+- Click Accept & Continue button.
+- Click Continue button again.
+- Remove all content from the Application URL form.
+- Fill in Database Host form with `localhost`.
+- Fill in Database Username form with `root`.
+- Fill in Database Name form with `phpnuxbill`.
+- Click Submit button.
+- Click Continue button again.
+- Open ssh in docker host.
+- Run the command below on docker host to delete the PHPNuxBill installer folder
+```bash
+docker exec phpnuxbill rm -rf /var/www/html/install
+```
+
+---
+
 ### Web Interface
 
-Open your web browser and visit the url `http://<IP_ADDRESS>:8080` to have access to the PHPNuxBill's web interface.
+Visit the url `http://<IP_ADDRESS>:8080` to have access to the PHPNuxBill's web interface.
+
+And visit the url `http://<IP_ADDRESS>:8080/admin` to have access to the PHPNuxBill's web settings.
 
 -   Default username: `admin`
 -   Default password: `admin`
