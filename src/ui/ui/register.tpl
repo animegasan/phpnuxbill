@@ -43,19 +43,28 @@
                         <div class="panel-heading">1. {$_L['Register_Member']}</div>
                         <div class="panel-body">
                             <div class="form-container">
-                                <div class="md-input-container md-float-label">
-                                    <input type="text" required class="md-input" id="username" value="{$username}"
-                                        placeholder="{$_L['Phone_Number']}" name="username">
+                                <div class="md-input-container">
                                     <label>{$_L['Phone_Number']}</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon" id="basic-addon1">+</span>
+                                        <input type="text" class="form-control" name="username"
+                                            placeholder="{if $_c['country_code_phone']!= ''}{$_c['country_code_phone']}{/if} {$_L['Phone_Number']}">
+                                    </div>
                                 </div>
                                 <div class="md-input-container md-float-label">
-                                    <input type="text" required class="md-input" id="fullname" value="{$fullname}"
-                                        name="fullname">
                                     <label>{$_L['Full_Name']}</label>
+                                    <input type="text" required class="form-control" id="fullname" value="{$fullname}"
+                                        name="fullname">
                                 </div>
                                 <div class="md-input-container md-float-label">
-                                    <input type="text" name="address" id="address" value="{$address}" class="md-input">
+                                    <label>{$_L['Email']}</label>
+                                    <input type="text" required class="form-control" id="email"
+                                        placeholder="xxxxxxx@xxxx.xx" value="{$email}" name="email">
+                                </div>
+                                <div class="md-input-container md-float-label">
                                     <label>{$_L['Address']}</label>
+                                    <input type="text" name="address" id="address" value="{$address}"
+                                        class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -67,20 +76,22 @@
                         <div class="panel-body">
                             <div class="form-container">
                                 <div class="md-input-container md-float-label">
-                                    <input type="password" required class="md-input" id="password" name="password">
                                     <label>{$_L['Password']}</label>
+                                    <input type="password" required class="form-control" id="password" name="password">
                                 </div>
                                 <div class="md-input-container md-float-label">
-                                    <input type="password" required class="md-input" id="cpassword" name="cpassword">
                                     <label>{$_L['Confirm_Password']}</label>
+                                    <input type="password" required class="form-control" id="cpassword"
+                                        name="cpassword">
                                 </div>
+                                <br>
                                 <div class="btn-group btn-group-justified mb15">
+                                <div class="btn-group">
+                                    <a href="{$_url}login" class="btn btn-warning">{$_L['Cancel']}</a>
+                                </div>
                                     <div class="btn-group">
-                                        <button class="btn btn-primary waves-effect waves-light"
+                                        <button class="btn btn-success waves-effect waves-light"
                                             type="submit">{$_L['Register']}</button>
-                                    </div>
-                                    <div class="btn-group">
-                                        <a href="{$_url}login" class="btn btn-success">{$_L['Cancel']}</a>
                                     </div>
                                 </div>
                             </div>
@@ -107,7 +118,7 @@
         </script>
         <!--End of Tawk.to Script-->
     {/if}
-    <script src="scripts/vendors.js"></script>
+    <script src="ui/ui/scripts/vendors.js"></script>
 </body>
 
 </html>

@@ -10,19 +10,13 @@
                     <div class="form-group">
                         <label class="col-md-3 control-label">{$_L['From_Date']}</label>
                         <div class="col-md-9">
-                            <div class="input-group" id="datepicker1">
-                                <input type="date" class="form-control" value="{$tdate}" name="fdate" id="fdate">
-                                <span class="input-group-addon"><i class=" ion ion-calendar"></i></span>
-                            </div>
+                            <input type="date" class="form-control" value="{$tdate}" name="fdate" id="fdate">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-3 control-label">{$_L['To_Date']}</label>
                         <div class="col-md-9">
-                            <div class="input-group date" id="datepicker2">
-                                <input type="date" class="form-control" value="{$mdate}" name="tdate" id="tdate">
-                                <span class="input-group-addon"><i class=" ion ion-calendar"></i></span>
-                            </div>
+                        <input type="date" class="form-control" value="{$mdate}" name="tdate" id="tdate">
                         </div>
                     </div>
                     <div class="form-group">
@@ -32,6 +26,7 @@
                                 <option value="" selected="">{$_L['All_Transactions']}</option>
                                 <option value="Hotspot">Hotspot</option>
                                 <option value="PPPOE">PPPOE</option>
+                                <option value="Balance">Balance</option>
                             </select>
                         </div>
                     </div>

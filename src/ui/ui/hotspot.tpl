@@ -14,7 +14,7 @@
 												</div>
 												<input type="text" name="name" class="form-control" placeholder="{$_L['Search_by_Name']}...">
 												<div class="input-group-btn">
-													<button class="btn btn-success">{$_L['Search']}</button>
+													<button class="btn btn-success" type="submit">{$_L['Search']}</button>
 												</div>
 											</div>
 											</form>
@@ -44,14 +44,14 @@
                                                     <td>{$ds['name_plan']}</td>
                                                     <td>{$ds['typebp']}</td>
                                                     <td>{$ds['name_bw']}</td>
-                                                    <td>{$ds['price']}</td>
+                                                    <td>{Lang::moneyFormat($ds['price'])}</td>
                                                     <td>{$ds['time_limit']} {$ds['time_unit']}</td>
                                                     <td>{$ds['data_limit']} {$ds['data_unit']}</td>
                                                     <td>{$ds['validity']} {$ds['validity_unit']}</td>
                                                     <td>{$ds['routers']}</td>
                                                     <td>
                                                         <a href="{$_url}services/edit/{$ds['id']}" class="btn btn-info btn-xs">{$_L['Edit']}</a>
-                                                        <a href="{$_url}services/delete/{$ds['id']}" id="{$ds['id']}" class="btn btn-danger btn-xs">{$_L['Delete']}</a>
+                                                        <a href="{$_url}services/delete/{$ds['id']}" id="{$ds['id']}" onclick="return confirm('{$_L['Delete']}?')" class="btn btn-danger btn-xs">{$_L['Delete']}</a>
                                                     </td>
                                                 </tr>
                                             {/foreach}

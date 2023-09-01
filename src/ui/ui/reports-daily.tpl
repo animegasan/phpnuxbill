@@ -41,10 +41,9 @@
                                 <td>{$ds['username']}</td>
                                 <td>{$ds['type']}</td>
                                 <td>{$ds['plan_name']}</td>
-                                <td class="text-right">{$_c['currency_code']}
-                                    {number_format($ds['price'],2,$_c['dec_point'],$_c['thousands_sep'])}</td>
-                                <td>{date($_c['date_format'], strtotime($ds['recharged_on']))} {$ds['time']}</td>
-                                <td>{date($_c['date_format'], strtotime($ds['expiration']))} {$ds['time']}</td>
+                                <td class="text-right">{Lang::moneyFormat($ds['price'])}</td>
+                                <td>{Lang::dateAndTimeFormat($ds['recharged_on'],$ds['recharged_time'])}</td>
+                                <td>{Lang::dateAndTimeFormat($ds['expiration'],$ds['time'])}</td>
                                 <td>{$ds['method']}</td>
                                 <td>{$ds['routers']}</td>
                             </tr>
@@ -56,7 +55,7 @@
 
             <div class="clearfix text-right total-sum mb10">
                 <h4 class="text-uppercase text-bold">{$_L['Total_Income']}:</h4>
-                <h3 class="sum">{$_c['currency_code']} {number_format($dr,2,$_c['dec_point'],$_c['thousands_sep'])}</h3>
+                <h3 class="sum">{Lang::moneyFormat($dr)}</h3>
             </div>
             <p class="text-center small text-info">{$_L['All_Transactions_at_Date']}:
                 {date($_c['date_format'], strtotime($mdate))} {$mtime}</p>

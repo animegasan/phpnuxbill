@@ -16,11 +16,8 @@
 
 <body style='background-color: #FBFBFB;'>
     <div id='main-container'>
-        <div class='header'>
-            <div class="header-box wrapper">
-                <div class="hd-logo"><a href="#"><img src="img/logo.png" alt="Logo" /></a></div>
-            </div>
-        </div>
+        <img src="img/logo.png" class="img-responsive" alt="Logo" />
+        <hr>
 
         <div class="span12">
             <h4> PHPNuxBill Installer </h4>
@@ -57,7 +54,7 @@
 				<a href=\"step3.php\" class=\"btn btn-primary\">Continue</a><br><br><a href=\"update.php\" class=\"btn btn-primary\">Update System</a>");
             } else {
                 echo ("<br/> $ltext <br/> Sorry. The requirements of PHPNuxBill  is not available on your server.
-				Please contact with us- iesien22@yahoo.com with this code- $passed Or contact with your server administrator
+				Contact with us at Telegram <a href=\"https://t.me/phpnuxbill\">@phpnuxbill</a> with this code- $passed Or contact with your server administrator
 				<br><br>
 				<a href=\"#\" class=\"btn btn-primary disabled\">Correct The Problem To Continue</a>");
             }
