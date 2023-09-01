@@ -23,6 +23,8 @@ RUN apk add --no-cache \
     php81-pdo_mysql \
     mysql \
     mysql-client \
+	libzip-dev \
+	zip \
     supervisor
 
 # Configure nginx
