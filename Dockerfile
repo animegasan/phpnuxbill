@@ -1,6 +1,6 @@
 # Startup from alpine
 FROM alpine:latest
-LABEL Maintainer = "Hilman Maulana, Ibnu Maksum"
+LABEL Maintainer = "Hilman Maulana, Ibnu Maksum, Rizki Rahmatullah"
 LABEL Description = "PHPNuxBill (PHP Mikrotik Billing) is a web-based application (MikroTik API PHP class) Voucher management for MikroTik Hotspot."
 
 # Setup document root
@@ -23,6 +23,8 @@ RUN apk add --no-cache \
     php81-pdo_mysql \
     mysql \
     mysql-client \
+    libzip-dev \
+    zip \
     supervisor
 
 # Configure nginx

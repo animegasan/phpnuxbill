@@ -9,11 +9,7 @@
 							<div class="form-group">
 								<label class="col-md-2 control-label">{$_L['Select_Account']}</label>
 								<div class="col-md-6">
-									<select id="personSelect" class="form-control" name="id_customer" style="width: 100%" data-placeholder="{$_L['Select_Customer']}...">
-									<option></option>
-										{foreach $c as $cs}
-											<option value="{$cs['id']}">{$cs['username']}</option>
-										{/foreach}
+									<select id="personSelect" class="form-control select2" name="id_customer" style="width: 100%" data-placeholder="{$_L['Select_Customer']}...">
 									</select>
 								</div>
 							</div>
@@ -27,7 +23,7 @@
 							<div class="form-group">
 								<label class="col-md-2 control-label">{$_L['Routers']}</label>
 								<div class="col-md-6">
-									<select id="server" name="server" class="form-control">
+									<select id="server" name="server" class="form-control select2">
 										<option value=''>{$_L['Select_Routers']}</option>
 									</select>
 								</div>
@@ -36,7 +32,7 @@
 							<div class="form-group">
 								<label class="col-md-2 control-label">{$_L['Service_Plan']}</label>
 								<div class="col-md-6">
-									<select id="plan" name="plan" class="form-control">
+									<select id="plan" name="plan" class="form-control select2">
 										<option value=''>{$_L['Select_Plans']}</option>
 									</select>
 								</div>

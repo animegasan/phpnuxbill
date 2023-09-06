@@ -16,6 +16,18 @@
     <link rel="stylesheet" href="ui/ui/styles/adminlte.min.css">
     <link rel="stylesheet" href="ui/ui/styles/skin-blue.min.css">
 
+    <style>
+        ::-moz-selection {
+            /* Code for Firefox */
+            color: red;
+            background: yellow;
+        }
+
+        ::selection {
+            color: red;
+            background: yellow;
+        }
+    </style>
 
     {if isset($xheader)}
         {$xheader}
@@ -27,7 +39,7 @@
     <div class="wrapper">
 
         <header class="main-header">
-            <a href="{$_url}?_route=home" class="logo">
+            <a href="{$_url}home" class="logo">
                 <span class="logo-mini"><b>N</b>uX</span>
                 <span class="logo-lg">{$_c['CompanyName']}</span>
             </a>
@@ -41,26 +53,29 @@
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <img src="https://robohash.org/{$_user['id']}?set=set3&size=100x100&bgset=bg1"
+                                    onerror="this.src='system/uploads/user.default.jpg'"
                                     class="user-image" alt="User Image">
                                 <span class="hidden-xs">{$_user['fullname']}</span>
                             </a>
                             <ul class="dropdown-menu">
                                 <li class="user-header">
                                     <img src="https://robohash.org/{$_user['id']}?set=set3&size=100x100&bgset=bg1"
+                                        onerror="this.src='system/uploads/user.default.jpg'"
                                         class="img-circle" alt="User Image">
 
                                     <p>
-                                    {$_user['fullname']}
-                                        <small>Member since Nov. 2012</small>
+                                        {$_user['fullname']}
+                                        <small>{$_user['phonenumber']}</small><br>
+                                        <small>{$_user['email']}</small>
                                     </p>
                                 </li>
                                 <li class="user-body">
                                     <div class="row">
-                                        <div class="col-xs-7 text-center">
+                                        <div class="col-xs-7 text-center text-sm">
                                             <a href="{$_url}accounts/change-password"><i class="ion ion-settings"></i>
                                                 {$_L['Change_Password']}</a>
                                         </div>
-                                        <div class="col-xs-5 text-center">
+                                        <div class="col-xs-5 text-center text-sm">
                                             <a href="{$_url}accounts/profile"><i class="ion ion-person"></i>
                                                 {$_L['My_Account']}</a>
                                         </div>
@@ -68,7 +83,8 @@
                                 </li>
                                 <li class="user-footer">
                                     <div class="pull-right">
-                                        <a href="{$_url}logout" class="btn btn-default btn-flat"><i class="ion ion-power"></i> {$_L['Logout']}</a>
+                                        <a href="{$_url}logout" class="btn btn-default btn-flat"><i
+                                                class="ion ion-power"></i> {$_L['Logout']}</a>
                                     </div>
                                 </li>
                             </ul>
@@ -88,12 +104,14 @@
                         </a>
                     </li>
                     {$_MENU_AFTER_DASHBOARD}
+                    {if $_c['disable_voucher'] != 'yes'}
                     <li {if $_system_menu eq 'voucher'}class="active" {/if}>
                         <a href="{$_url}voucher/activation">
                             <i class="fa fa-ticket"></i>
                             <span>{Lang::T('Voucher')}</span>
                         </a>
                     </li>
+                    {/if}
                     {if $_c['payment_gateway'] != 'none' or $_c['payment_gateway'] == '' }
                         <li {if $_system_menu eq 'package'}class="active" {/if}>
                             <a href="{$_url}order/package">
@@ -127,4 +145,4 @@
                 </h1>
             </section>
             <section class="content">
-            {if isset($notify)}{$notify}{/if}
+{if isset($notify)}{$notify}{/if}

@@ -24,12 +24,10 @@
                                 <tr>
                                     <td>{$ds['username']}</td>
                                     <td>{$ds['plan_name']}</td>
-                                    <td>{number_format($ds['price'],2,$_c['dec_point'],$_c['thousands_sep'])}</td>
+                                    <td>{Lang::moneyFormat($ds['price'])}</td>
                                     <td>{$ds['type']}</td>
-                                    <td class="text-success">{date($_c['date_format'], strtotime($ds['recharged_on']))}
-                                        {$ds['time']}</td>
-                                    <td class="text-danger">{date($_c['date_format'], strtotime($ds['expiration']))}
-                                        {$ds['time']}</td>
+                                    <td>{Lang::dateAndTimeFormat($ds['recharged_on'],$ds['recharged_time'])}</td>
+                                    <td>{Lang::dateAndTimeFormat($ds['expiration'],$ds['time'])}</td>
                                     <td>{$ds['method']}</td>
                                 </tr>
                             {/foreach}

@@ -19,12 +19,18 @@ $otpPath = 'system/cache/sms/';
 switch ($do) {
     case 'post':
         $otp_code = _post('otp_code');
-        $username = _post('username');
+        $username = alphanumeric(_post('username'),"+_.");
+        $email = _post('email');
         $fullname = _post('fullname');
         $password = _post('password');
         $cpassword = _post('cpassword');
         $address = _post('address');
-        $phonenumber = _post('username');
+        if(!empty($config['sms_url'])){
+            $phonenumber = Lang::phoneFormat($username);
+            $username = $phonenumber;
+        }else if(strlen($username)<21){
+            $phonenumber = $username;
+        }
         $msg = '';
         if (Validator::Length($username, 35, 2) == false) {
             $msg .= 'Username should be between 3 to 55 characters' . '<br>';
@@ -34,6 +40,9 @@ switch ($do) {
         }
         if (!Validator::Length($password, 35, 2)) {
             $msg .= 'Password should be between 3 to 35 characters' . '<br>';
+        }
+        if (!Validator::Email($email)) {
+            $msg .= 'Email is not Valid<br>';
         }
         if ($password != $cpassword) {
             $msg .= $_L['PasswordsNotMatch'] . '<br>';
@@ -51,6 +60,7 @@ switch ($do) {
                     $ui->assign('username', $username);
                     $ui->assign('fullname', $fullname);
                     $ui->assign('address', $address);
+                    $ui->assign('email', $email);
                     $ui->assign('phonenumber', $phonenumber);
                     $ui->assign('notify', '<div class="alert alert-success">
                     <button type="button" class="close" data-dismiss="alert">
@@ -73,10 +83,11 @@ switch ($do) {
         if ($msg == '') {
             run_hook('register_user'); #HOOK
             $d = ORM::for_table('tbl_customers')->create();
-            $d->username = $username;
+            $d->username = alphanumeric($username,"+_.");
             $d->password = $password;
             $d->fullname = $fullname;
             $d->address = $address;
+            $d->email = $email;
             $d->phonenumber = $phonenumber;
             if ($d->save()) {
                 $user = $d->id();
@@ -85,6 +96,7 @@ switch ($do) {
                 $ui->assign('username', $username);
                 $ui->assign('fullname', $fullname);
                 $ui->assign('address', $address);
+                $ui->assign('email', $email);
                 $ui->assign('phonenumber', $phonenumber);
                 $ui->assign('notify', '<div class="alert alert-danger">
                 <button type="button" class="close" data-dismiss="alert">
@@ -98,6 +110,7 @@ switch ($do) {
             $ui->assign('username', $username);
             $ui->assign('fullname', $fullname);
             $ui->assign('address', $address);
+            $ui->assign('email', $email);
             $ui->assign('phonenumber', $phonenumber);
             $ui->assign('notify', '<div class="alert alert-danger">
             <button type="button" class="close" data-dismiss="alert">
@@ -149,6 +162,7 @@ switch ($do) {
             $ui->assign('username', "");
             $ui->assign('fullname', "");
             $ui->assign('address', "");
+            $ui->assign('email', "");
             $ui->assign('otp', false);
             run_hook('view_register'); #HOOK
             $ui->display('register.tpl');
